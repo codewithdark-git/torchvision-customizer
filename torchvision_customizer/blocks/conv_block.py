@@ -6,6 +6,8 @@ import torch
 import torch.nn as nn
 from torch import Tensor
 
+from torchvision_customizer.layers import get_activation
+
 
 class ConvBlock(nn.Module):
     """A configurable convolutional building block for neural networks.
@@ -51,7 +53,7 @@ class ConvBlock(nn.Module):
         kernel_size: int | Tuple[int, int] = 3,
         stride: int | Tuple[int, int] = 1,
         padding: int | Tuple[int, int] = 1,
-        activation: Literal["relu", "leaky_relu", "gelu", "elu", "selu", "sigmoid", "tanh"] | None = "relu",
+        activation: Literal["relu", "leaky_relu", "gelu", "elu", "selu", "sigmoid", "tanh", "prelu", "silu"] | None = "relu",
         use_batchnorm: bool = True,
         dropout_rate: float = 0.0,
         pooling_type: Literal["max", "avg", "adaptive_avg"] | None = None,
@@ -73,7 +75,8 @@ class ConvBlock(nn.Module):
             padding: Padding added to input. Default is 1.
                 Can be int or tuple for different dimensions.
             activation: Type of activation function to apply after convolution.
-                Options: 'relu', 'leaky_relu', 'gelu', 'elu', 'selu', 'sigmoid', 'tanh'.
+                Options: 'relu', 'leaky_relu', 'gelu', 'elu', 'selu', 'sigmoid', 
+                'tanh', 'prelu', 'silu'.
                 If None, no activation is applied. Default is 'relu'.
             use_batchnorm: Whether to apply batch normalization after convolution.
                 Default is True.
@@ -152,8 +155,13 @@ class ConvBlock(nn.Module):
     def _get_activation(self, activation: str) -> nn.Module:
         """Get activation function module by name.
 
+        Uses the activation factory from torchvision_customizer.layers
+        to create the activation function.
+
         Args:
             activation: Name of the activation function.
+                Supported: 'relu', 'leaky_relu', 'gelu', 'elu', 'selu',
+                'sigmoid', 'tanh', 'prelu', 'silu'
 
         Returns:
             Activation function module.
@@ -161,23 +169,12 @@ class ConvBlock(nn.Module):
         Raises:
             ValueError: If activation name is not recognized.
         """
-        activations: Dict[str, type[nn.Module]] = {
-            "relu": nn.ReLU,
-            "leaky_relu": nn.LeakyReLU,
-            "gelu": nn.GELU,
-            "elu": nn.ELU,
-            "selu": nn.SELU,
-            "sigmoid": nn.Sigmoid,
-            "tanh": nn.Tanh,
-        }
-
-        if activation not in activations:
+        try:
+            return get_activation(activation)
+        except ValueError as e:
             raise ValueError(
-                f"Unknown activation function: {activation}. "
-                f"Available options: {list(activations.keys())}"
-            )
-
-        return activations[activation]()
+                f"Unknown activation function: {activation}. {str(e)}"
+            ) from e
 
     def _get_pooling(
         self,
