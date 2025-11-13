@@ -1,0 +1,6 @@
+# Core dependencies
+torch==2.9.1
+torchvision==0.24.1
+numpy==2.3.4
+PyYAML==6.0.3
+typing-extensions==4.15.0

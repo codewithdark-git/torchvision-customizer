@@ -1,0 +1,23 @@
+# Development dependencies
+-r requirements.txt
+
+# Testing
+pytest==9.0.1
+pytest-cov==7.0.0
+pytest-xdist==3.8.0
+
+# Code quality
+black==25.11.0
+isort==7.0.0
+flake8==7.3.0
+mypy==1.18.2
+pylint==4.0.2
+
+# Documentation
+Sphinx==8.2.3
+sphinx-rtd-theme==3.0.2
+sphinx-autodoc-typehints==3.5.2
+
+# Development utilities
+ipython==9.7.0
+jupyter==1.1.1
