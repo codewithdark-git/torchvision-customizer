@@ -35,8 +35,8 @@ pip install -e ".[dev]"
 
 ### Requirements
 - **Python**: 3.13 or higher
-- **PyTorch**: 2.0.0 or higher
-- **torchvision**: 0.15.0 or higher
+- **PyTorch**: 2.9.0 or higher
+- **torchvision**: 0.24.1 or higher
 
 ## 🚀 Quick Start
 
@@ -195,7 +195,7 @@ If you use torchvision-customizer in your research, please cite:
 ```bibtex
 @software{torchvision_customizer,
   title={torchvision-customizer: Build Customizable CNNs from Scratch},
-  author={ComputerVision Team},
+  author={Ahsan Umar, ComputerVision Team},
   url={https://github.com/codewithdark-git/torchvision-customizer},
   year={2025}
 }

@@ -8,6 +8,7 @@ __pycache__/
 
 # project
 *.md
+*.ps1
 
 # Distribution / packaging
 .Python
