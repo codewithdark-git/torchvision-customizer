@@ -34,6 +34,29 @@ from torchvision_customizer.blocks.inception_module import InceptionModule
 from torchvision_customizer.blocks.conv3d_block import Conv3DBlock
 from torchvision_customizer.blocks.super_conv2d import SuperConv2d
 from torchvision_customizer.blocks.super_linear import SuperLinear
+from torchvision_customizer.blocks.advanced_architecture import (
+    ResidualConnector,
+    SkipConnectionBuilder,
+    DenseConnectionBlock,
+    MixedArchitectureBlock,
+    create_skip_connections,
+    validate_architecture_compatibility,
+)
+from torchvision_customizer.blocks.bottleneck_block import (
+    StandardBottleneck,
+    WideBottleneck,
+    GroupedBottleneck,
+    MultiScaleBottleneck,
+    AsymmetricBottleneck,
+    create_bottleneck,
+)
+from torchvision_customizer.blocks.residual_architecture import (
+    ResidualStage,
+    ResidualSequence,
+    ResidualBottleneckStage,
+    ResidualArchitectureBuilder,
+    ResidualStageConfig,
+)
 
 __all__ = [
     # Basic blocks
@@ -47,4 +70,25 @@ __all__ = [
     "Conv3DBlock",
     "SuperConv2d",
     "SuperLinear",
+    
+    # Step 6: Advanced Architecture Features
+    "ResidualConnector",
+    "SkipConnectionBuilder",
+    "DenseConnectionBlock",
+    "MixedArchitectureBlock",
+    "create_skip_connections",
+    "validate_architecture_compatibility",
+    
+    # Step 7: Residual Connections & Bottleneck Architecture
+    "StandardBottleneck",
+    "WideBottleneck",
+    "GroupedBottleneck",
+    "MultiScaleBottleneck",
+    "AsymmetricBottleneck",
+    "create_bottleneck",
+    "ResidualStage",
+    "ResidualSequence",
+    "ResidualBottleneckStage",
+    "ResidualArchitectureBuilder",
+    "ResidualStageConfig",
 ]
