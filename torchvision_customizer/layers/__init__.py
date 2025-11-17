@@ -43,8 +43,25 @@ from .pooling import (
     is_pooling_supported,
     get_supported_pooling,
     PoolingFactory,
+    PoolingBlock,
+    StochasticPool2d,
+    LPPool2d,
+    calculate_pooling_output_size,
+    validate_pooling_config,
     POOLING_REGISTRY,
     POOLING_DEFAULTS,
+)
+
+from .attention import (
+    ChannelAttention,
+    SpatialAttention,
+    ChannelSpatialAttention,
+    MultiHeadAttention,
+    PositionalEncoding,
+    AttentionBlock,
+    create_attention_map,
+    apply_attention,
+    normalize_attention,
 )
 
 __all__ = [
@@ -69,6 +86,23 @@ __all__ = [
     'is_pooling_supported',
     'get_supported_pooling',
     'PoolingFactory',
+    'PoolingBlock',
+    'StochasticPool2d',
+    'LPPool2d',
+    'calculate_pooling_output_size',
+    'validate_pooling_config',
     'POOLING_REGISTRY',
     'POOLING_DEFAULTS',
+    
+    # Step 6: Attention Mechanisms
+    'ChannelAttention',
+    'SpatialAttention',
+    'ChannelSpatialAttention',
+    'MultiHeadAttention',
+    'PositionalEncoding',
+    'AttentionBlock',
+    'create_attention_map',
+    'apply_attention',
+    'normalize_attention',
 ]
+

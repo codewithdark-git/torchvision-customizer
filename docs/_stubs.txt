@@ -1,0 +1,11 @@
+.. toctree stub files
+
+.. stub for user_guide/layers.rst
+.. stub for user_guide/blocks.rst
+.. stub for user_guide/models.rst
+.. stub for user_guide/advanced.rst
+.. stub for examples/advanced_patterns.rst
+.. stub for examples/transfer_learning.rst
+.. stub for examples/custom_architectures.rst
+.. stub for development/performance.rst
+.. stub for development/changelog.rst
