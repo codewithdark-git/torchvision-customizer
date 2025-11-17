@@ -1,47 +1,25 @@
-# ReadTheDocs configuration file
-# See https://docs.readthedocs.io/en/stable/config-file/v2/
-
 version: 2
 
-# Build configuration
 build:
   os: ubuntu-22.04
   tools:
     python: "3.13"
+  jobs:
+    pre_build:
+      - pip install --upgrade pip setuptools wheel
+      - pip install torch --index-url https://download.pytorch.org/whl/cpu
 
-# Python environment
-python:
-  version: "3.13"
-  install:
-    - method: pip
-      path: .
-      extra: dev
-  system_packages: true
-
-# Documentation build
 sphinx:
   configuration: docs/conf.py
   fail_on_warning: false
-  builder: html
 
-# Enable PDF and epub builds
+python:
+  install:
+    - method: pip
+      path: .
+      extra_requirements:
+        - dev
+
 formats:
   - pdf
   - epub
-
-# Subprojects (if any)
-# subprojects: []
-
-# Redirects (if any)
-# redirects: {}
-
-# Webhook events
-# webhook_events: []
-
-# Search options
-search:
-  ranking:
-    - docs/**
-  ignore:
-    - /docs/_build/
-    - /docs/.doctrees/
