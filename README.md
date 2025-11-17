@@ -94,10 +94,30 @@ model = CustomCNN.from_config(config)
 
 ## 📚 Documentation
 
-- [**API Reference**](docs/api_reference.md) - Complete API documentation
-- [**User Guide**](docs/quickstart.md) - Getting started and common patterns
-- [**Examples**](examples/) - Sample code and use cases
-- [**Advanced Topics**](docs/advanced_usage.md) - Custom layers, optimization, deployment
+📖 **Full Documentation**: [https://torchvision-customizer.readthedocs.io](https://torchvision-customizer.readthedocs.io/en/latest/)
+
+- [**Introduction**](https://torchvision-customizer.readthedocs.io/en/latest/introduction.html) - Project overview and design principles
+- [**Installation Guide**](https://torchvision-customizer.readthedocs.io/en/latest/installation.html) - Multiple installation methods
+- [**Quick Start**](https://torchvision-customizer.readthedocs.io/en/latest/quick_start.html) - Get up and running in minutes
+- [**API Reference**](https://torchvision-customizer.readthedocs.io/en/latest/api/blocks.html) - Complete API documentation (Blocks, Layers, Models, Utils)
+- [**User Guides**](https://torchvision-customizer.readthedocs.io/en/latest/user_guide/basics.html) - Comprehensive tutorials and patterns
+- [**Examples**](https://torchvision-customizer.readthedocs.io/en/latest/examples/basic_usage.html) - 8+ working examples and use cases
+- [**Development Guide**](https://torchvision-customizer.readthedocs.io/en/latest/development/contributing.html) - Contributing and development guidelines
+
+## 🎁 Coming Soon
+
+🚀 **Exciting features in development:**
+
+- ⚠️ **Attention Blocks** - Multi-head attention, self-attention mechanisms
+- 🔄 **Transformer Blocks** - Vision Transformer (ViT) style components
+- 📋 **Vision Models** - Pre-built paper implementations (ResNet, VGG, EfficientNet, MobileNet, etc.)
+- 🏃 **Custom Architectures** - User-defined layer combinations and patterns
+- 📰 **Paper-Proposed Architectures** - Reference implementations from seminal papers
+- 🧠 **Knowledge Distillation** - Model compression techniques
+- ⚡ **Quantization Support** - INT8, INT4 quantization for deployment
+- 🔍 **Neural Architecture Search (NAS)** - Automated architecture optimization
+- 📊 **Advanced Profiling** - Memory and compute analysis tools
+- 🖥️ **Hardware Optimization** - GPU and TPU specific optimizations
 
 ## 🔬 Example Use Cases
 
@@ -188,16 +208,16 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 📖 Citation
+## 📄 Citation
 
 If you use torchvision-customizer in your research, please cite:
 
 ```bibtex
-@software{torchvision_customizer,
-  title={torchvision-customizer: Build Customizable CNNs from Scratch},
-  author={Ahsan Umar, ComputerVision Team},
-  url={https://github.com/codewithdark-git/torchvision-customizer},
-  year={2025}
+@software{torchvision_customizer_2025,
+  title={torchvision-customizer: Flexible CNN Architecture Builder},
+  author={Ahsan Umar},
+  year={2025},
+  url={https://github.com/codewithdark-git/torchvision-customizer}
 }
 ```
 
