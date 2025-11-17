@@ -221,7 +221,50 @@ If you use torchvision-customizer in your research, please cite:
 
     @software{torchvision_customizer_2025,
         title={torchvision-customizer: Flexible CNN Architecture Builder},
-        author={CodeWithDark},
+        author={Umar, Ahsan},
         year={2025},
+        doi={10.5281/zenodo.17633293},
         url={https://github.com/codewithdark-git/torchvision-customizer}
     }
+
+Citation Formats
+----------------
+
+**APA Format:**
+
+Umar, A. (2025). torchvision-customizer: Flexible CNN Architecture Builder [Software]. 
+Retrieved from https://github.com/codewithdark-git/torchvision-customizer
+
+**Chicago Format:**
+
+Umar, Ahsan. 2025. "torchvision-customizer: Flexible CNN Architecture Builder." 
+Accessed November 17, 2025. https://github.com/codewithdark-git/torchvision-customizer.
+
+**Harvard Format:**
+
+Umar, A., 2025. torchvision-customizer: Flexible CNN Architecture Builder. 
+Available at: https://github.com/codewithdark-git/torchvision-customizer.
+
+**MLA Format:**
+
+Umar, Ahsan. "torchvision-customizer: Flexible CNN Architecture Builder." 
+GitHub, 2025, https://github.com/codewithdark-git/torchvision-customizer.
+
+Share Your Research
+-------------------
+
+If you've published research using torchvision-customizer, we'd love to hear about it! Please:
+
+1. Add your paper to our `Research Papers Wiki <https://github.com/codewithdark-git/torchvision-customizer/wiki/Research-Papers>`_
+2. Open an issue on GitHub with the tag ``[publication]``
+3. Share in `GitHub Discussions <https://github.com/codewithdark-git/torchvision-customizer/discussions>`_
+
+Tracking Citation Metrics
+--------------------------
+
+Monitor the project's academic impact:
+
+- **GitHub Repository**: https://github.com/codewithdark-git/torchvision-customizer
+- **Documentation**: https://torchvision-customizer.readthedocs.io
+- **PyPI Package**: https://pypi.org/project/torchvision-customizer
+- **GitHub Stars**: Show your support on our `Stargazers page <https://github.com/codewithdark-git/torchvision-customizer/stargazers>`_
