@@ -4,6 +4,8 @@
 [![Python 3.13+](https://img.shields.io/badge/python-3.13+-blue.svg)](https://www.python.org/downloads/)
 [![PyTorch 2.9+](https://img.shields.io/badge/pytorch-2.9+-red.svg)](https://pytorch.org/)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![GitHub Stars](https://img.shields.io/github/stars/codewithdark-git/torchvision-customizer?style=social)](https://github.com/codewithdark-git/torchvision-customizer)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.PLACEHOLDER.svg)](https://doi.org/10.5281/zenodo.17633293)
 
 > **Build highly customizable convolutional neural networks from scratch with an intuitive Python API.**
 
@@ -217,9 +219,27 @@ If you use torchvision-customizer in your research, please cite:
   title={torchvision-customizer: Flexible CNN Architecture Builder},
   author={Ahsan Umar},
   year={2025},
+  doi={10.5281/zenodo.17633293},
   url={https://github.com/codewithdark-git/torchvision-customizer}
 }
 ```
+
+### Citation Tracking
+
+Track how your research using torchvision-customizer is being cited:
+
+- **Google Scholar**: [Search "torchvision-customizer"](https://scholar.google.com/scholar?q=torchvision-customizer)
+- **GitHub Stars**: See community interest on our [GitHub repository](https://github.com/codewithdark-git/torchvision-customizer/stargazers)
+- **PyPI Downloads**: Monitor package usage on [PyPI stats](https://pypistats.org/packages/torchvision-customizer)
+- **Zenodo**: Access the DOI for formal citation tracking at [Zenodo](https://zenodo.org) (Coming soon)
+
+### Share Your Research
+
+If you've published research using torchvision-customizer, we'd love to hear about it! Please:
+
+1. Add your paper to our [Research Using This Library](https://github.com/codewithdark-git/torchvision-customizer/wiki/Research-Papers) wiki page
+2. Open an issue with the tag `[publication]` 
+3. Feel free to add a discussion in [GitHub Discussions](https://github.com/codewithdark-git/torchvision-customizer/discussions)
 
 ## 🎓 Acknowledgments
 
