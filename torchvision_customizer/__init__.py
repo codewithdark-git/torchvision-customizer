@@ -8,6 +8,7 @@ from torchvision_customizer.__version__ import (
     __url__,
     __version__,
 )
+from torchvision_customizer.models import CustomCNN
 
 __all__ = [
     "__version__",
@@ -16,4 +17,5 @@ __all__ = [
     "__description__",
     "__license__",
     "__url__",
+    "CustomCNN",
 ]

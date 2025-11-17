@@ -1,0 +1,47 @@
+# ReadTheDocs requirements for documentation building
+# Install with: pip install -r docs/requirements.txt
+
+# Core documentation tools
+sphinx>=7.0.0
+sphinx-rtd-theme>=1.3.0
+sphinx-autodoc-typehints>=1.24.0
+
+# Python documentation
+python-docs-samples>=1.0.0
+
+# Code highlighting and formatting
+pygments>=2.15.0
+docutils>=0.20.0
+
+# API documentation generation
+sphinx-autoapi>=3.0.0
+autodoc-pydantic>=2.0.0
+
+# Additional Sphinx extensions
+sphinxcontrib-autodoc-pydantic>=2.0.0
+sphinxcontrib.napoleon>=0.7.0
+
+# Search and indexing
+sphinx-search>=0.0.1
+
+# Cross-referencing
+sphinx-tabs>=3.4.1
+
+# Math and equations
+sphinx-math-dollar>=1.1.0
+
+# Configuration validation
+pydantic>=2.0.0
+
+# Requirements for the package itself
+torch>=2.9.0
+torchvision>=0.24.1
+numpy>=1.24.0
+pyyaml>=6.0
+
+# Development tools (optional but helpful)
+pytest>=7.0.0
+pytest-cov>=4.0.0
+black>=23.0.0
+mypy>=1.0.0
+flake8>=6.0.0
