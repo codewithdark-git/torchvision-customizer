@@ -5,7 +5,7 @@
 [![PyTorch 2.9+](https://img.shields.io/badge/pytorch-2.9+-red.svg)](https://pytorch.org/)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![GitHub Stars](https://img.shields.io/github/stars/codewithdark-git/torchvision-customizer?style=social)](https://github.com/codewithdark-git/torchvision-customizer)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.PLACEHOLDER.svg)](https://doi.org/10.5281/zenodo.17633293)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17633293.svg)](https://doi.org/10.5281/zenodo.17633293)
 
 > **Build highly customizable convolutional neural networks from scratch with an intuitive Python API.**
 
@@ -224,14 +224,14 @@ If you use torchvision-customizer in your research, please cite:
 }
 ```
 
-### Citation Tracking
+<!-- ### Citation Tracking
 
 Track how your research using torchvision-customizer is being cited:
 
 - **Google Scholar**: [Search "torchvision-customizer"](https://scholar.google.com/scholar?q=torchvision-customizer)
 - **GitHub Stars**: See community interest on our [GitHub repository](https://github.com/codewithdark-git/torchvision-customizer/stargazers)
 - **PyPI Downloads**: Monitor package usage on [PyPI stats](https://pypistats.org/packages/torchvision-customizer)
-- **Zenodo**: Access the DOI for formal citation tracking at [Zenodo](https://zenodo.org) (Coming soon)
+- **Zenodo**: Access the DOI for formal citation tracking at [Zenodo](https://zenodo.org) (Coming soon) -->
 
 ### Share Your Research
 
