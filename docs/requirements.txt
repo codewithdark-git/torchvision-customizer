@@ -6,8 +6,6 @@ sphinx>=7.0.0
 sphinx-rtd-theme>=1.3.0
 sphinx-autodoc-typehints>=1.24.0
 
-# Python documentation
-python-docs-samples>=1.0.0
 
 # Code highlighting and formatting
 pygments>=2.15.0
