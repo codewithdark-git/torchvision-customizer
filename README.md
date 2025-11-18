@@ -217,7 +217,7 @@ If you use torchvision-customizer in your research, please cite:
 ```bibtex
 @software{torchvision_customizer_2025,
   title={torchvision-customizer: Flexible CNN Architecture Builder},
-  author={Ahsan Umar},
+  author={Umar, Ahsan},
   year={2025},
   doi={10.5281/zenodo.17633293},
   url={https://github.com/codewithdark-git/torchvision-customizer}
