@@ -7,7 +7,7 @@ name = "torchvision-customizer"
 version = "2.0"
 description = "A production-ready Python package for building highly customizable convolutional neural networks (CNNs) from scratch with an intuitive API"
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.11"
 license = {text = "MIT"}
 authors = [
     {name = "codewithdark", email = "codewithdark90@gmail.com"}
@@ -34,7 +34,6 @@ classifiers = [
     "Operating System :: OS Independent",
     "Programming Language :: Python",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
@@ -108,7 +107,7 @@ known_first_party = ["torchvision_customizer"]
 known_third_party = ["torch", "torchvision", "numpy", "yaml"]
 
 [tool.mypy]
-python_version = "3.10"
+python_version = "3.11"
 warn_return_any = true
 warn_unused_configs = true
 disallow_untyped_defs = false

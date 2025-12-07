@@ -31,8 +31,8 @@ sphinx-math-dollar>=1.2.1
 pydantic>=2.12.4
 
 # Requirements for the package itself
-torch>=2.9.0
-torchvision>=0.24.1
+torch>=2.5.0
+torchvision>=0.25.0
 numpy==2.3.4
 PyYAML==6.0.3
 

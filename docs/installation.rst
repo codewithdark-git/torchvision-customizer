@@ -7,10 +7,10 @@ Requirements
 
 Before installing torchvision-customizer, ensure you have:
 
-- **Python**: 3.13 or higher
+- **Python**: 3.11 or higher
 - **pip**: 21.0 or higher
-- **PyTorch**: 2.9.0 or higher
-- **torchvision**: 0.24.1 or higher
+- **PyTorch**: 2.5.0 or higher
+- **torchvision**: 0.25.0 or higher
 - **CUDA** (optional): For GPU acceleration
 
 Check Your Python Version
@@ -19,7 +19,7 @@ Check Your Python Version
 .. code-block:: bash
 
     python --version
-    # Should show Python 3.13.x or higher
+    # Should show Python 3.11.x or higher
 
 Check Your PyTorch Installation
 --------------------------------
@@ -27,7 +27,7 @@ Check Your PyTorch Installation
 .. code-block:: bash
 
     python -c "import torch; print(torch.__version__)"
-    # Should show 2.9.0 or higher
+    # Should show 2.5.0 or higher
 
 Installation Methods
 ====================
