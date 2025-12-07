@@ -124,3 +124,27 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 ## 📄 License
 
 This project is licensed under the MIT License.
+
+## 📄 Citation
+
+If you use torchvision-customizer in your research, please cite:
+
+```bibtex
+@software{torchvision_customizer_2025,
+  title={torchvision-customizer: Flexible CNN Architecture Builder},
+  author={Ahsan Umar},
+  year={2025},
+  url={https://github.com/codewithdark-git/torchvision-customizer}
+}
+```
+
+## 🎓 Acknowledgments
+
+Built with 💙 for the computer vision and deep learning research community.
+
+## 📞 Support
+
+- **Documentation**: Check the [documentation](https://torchvision-customizer.readthedocs.io/) 
+- **Issues**: [GitHub Issues](https://github.com/codewithdark-git/torchvision-customizer/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/codewithdark-git/torchvision-customizer/discussions)
+
