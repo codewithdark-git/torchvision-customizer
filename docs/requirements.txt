@@ -32,7 +32,7 @@ pydantic>=2.12.4
 
 # Requirements for the package itself
 torch>=2.5.0
-torchvision>=0.25.0
+torchvision>=0.24.1
 numpy==2.3.4
 PyYAML==6.0.3
 
