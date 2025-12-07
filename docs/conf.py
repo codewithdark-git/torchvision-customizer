@@ -13,8 +13,8 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 project = "torchvision-customizer"
 copyright = "2025, CodeWithDark"
 author = "CodeWithDark"
-release = "1.0.0"
-version = "1.0"
+release = "2.0.0"
+version = "2.0"
 
 # -- General configuration -----------------------------------------------
 extensions = [
