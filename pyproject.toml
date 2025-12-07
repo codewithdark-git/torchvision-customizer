@@ -42,11 +42,11 @@ classifiers = [
 ]
 
 dependencies = [
-    "torch>=2.0.0",
-    "torchvision>=0.15.0",
-    "numpy>=1.21.0",
-    "pyyaml>=6.0",
-    "typing-extensions>=4.0.0",
+    "torch>=2.5.0",
+    "torchvision>=0.24.1",
+    "numpy>=2.3.4",
+    "pyyaml>=6.0.3",
+    "typing-extensions>=4.15.0",
 ]
 
 [project.optional-dependencies]
@@ -77,9 +77,6 @@ Documentation = "https://torchvision-customizer.readthedocs.io"
 
 [tool.setuptools]
 packages = ["torchvision_customizer"]
-
-[tool.setuptools.package-dir]
-"torchvision_customizer" = "torchvision_customizer"
 
 [tool.black]
 line-length = 100

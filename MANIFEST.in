@@ -1,0 +1,13 @@
+include README.md
+include LICENSE
+include RELEASE_NOTES.md
+include CITATION.cff
+include pyproject.toml
+include setup.py
+recursive-include torchvision_customizer *.py
+recursive-include docs *
+recursive-include examples *
+prune tests
+prune venv
+global-exclude *.py[cod]
+global-exclude __pycache__

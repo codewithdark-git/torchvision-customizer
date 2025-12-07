@@ -8,6 +8,8 @@
 
 **torchvision-customizer** empowers researchers to build parametric models and explore new architectures without boilerplate. No pre-trained weights, just pure architectural flexibility.
 
+
+
 ## 🌟 Key Features
 
 ### 1. Component Registry (Tier 1)
@@ -60,6 +62,12 @@ model = (Template.resnet(layers=50)
 
 ## 📦 Installation
 
+### From GitHub (Recommended)
+```bash
+pip install git+https://github.com/codewithdark-git/torchvision-customizer.git
+```
+
+### From Source (Development)
 ```bash
 git clone https://github.com/codewithdark-git/torchvision-customizer.git
 cd torchvision-customizer
