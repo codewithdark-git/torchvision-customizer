@@ -1,29 +1,20 @@
-.. torchvision-customizer documentation master file, created by
-   sphinx-quickstart on 2025-01-01.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+.. torchvision-customizer documentation master file
 
 ========================================
 torchvision-customizer Documentation
 ========================================
 
-.. image:: https://img.shields.io/badge/License-MIT-yellow.svg
-    :target: https://opensource.org/licenses/MIT
+**Build highly customizable convolutional neural networks from scratch with a 3-tier API.**
 
-.. image:: https://img.shields.io/badge/python-3.13+-blue.svg
-    :target: https://www.python.org/downloads/
+A production-ready Python package that empowers researchers and developers to create flexible, modular CNNs with fine-grained control over every architectural decision.
 
-.. image:: https://img.shields.io/badge/pytorch-2.9+-red.svg
-    :target: https://pytorch.org/
+Key Concepts
+============
 
-.. image:: https://img.shields.io/badge/code%20style-black-000000.svg
-    :target: https://github.com/psf/black
-
-**Build highly customizable convolutional neural networks from scratch with an intuitive Python API.**
-
-A production-ready Python package that empowers researchers and developers to create flexible, modular CNNs 
-with fine-grained control over every architectural decision while maintaining full compatibility with the 
-PyTorch ecosystem.
+1. **Component Registry (Tier 1)**: Centralized management of all building blocks.
+2. **Architecture Recipes (Tier 2)**: Declarative, string-based model definitions.
+3. **Model Composer (Tier 3)**: Fluent, operator-based API for programmatic construction.
+4. **Templates**: Parametric implementations of standard architectures (ResNet, VGG, etc.).
 
 .. toctree::
    :maxdepth: 2
@@ -36,166 +27,50 @@ PyTorch ecosystem.
 
 .. toctree::
    :maxdepth: 2
-   :caption: User Guide
-   :hidden:
-
-   user_guide/basics
-   user_guide/layers
-   user_guide/blocks
-   user_guide/models
-   user_guide/advanced
-
-.. toctree::
-   :maxdepth: 2
    :caption: API Reference
    :hidden:
 
    api/blocks
-   api/layers
-   api/models
-   api/utils
+   api/recipe
+   api/compose
+   api/templates
 
-.. toctree::
-   :maxdepth: 2
-   :caption: Examples
-   :hidden:
+Examples
+========
 
-   examples/basic_usage
-   examples/advanced_patterns
-   examples/transfer_learning
-   examples/custom_architectures
-
-.. toctree::
-   :maxdepth: 2
-   :caption: Development
-   :hidden:
-
-   development/contributing
-   development/testing
-   development/performance
-   development/changelog
-
-Quick Links
-===========
-
-* :ref:`Quick Start <quick_start>`
-* :ref:`API Reference <api_reference>`
-* :ref:`Examples <examples>`
-* `GitHub Repository <https://github.com/codewithdark-git/torchvision-customizer>`_
-* `Report Issues <https://github.com/codewithdark-git/torchvision-customizer/issues>`_
-
-Key Features
-============
-
-🔧 **Granular Control**
-   Customize network depth, channels, activations, normalization, pooling, and more
-
-🧩 **Modular Blocks**
-   Pre-built components (ConvBlock, ResidualBlock, InceptionBlock, SEBlock, Bottleneck, etc.)
-
-🏗️ **Multiple APIs**
-   Simple interface for quick prototyping, builder pattern for advanced users
-
-📊 **Model Introspection**
-   Get parameter counts, FLOPs, memory footprint, and architecture summaries
-
-⚙️ **Configuration-Based**
-   Define models via YAML/JSON for reproducibility and sharing
-
-🚀 **Production-Ready**
-   Full type hints, comprehensive tests (382 tests, 100% passing), and CI/CD integration
-
-📈 **Architecture Patterns**
-   Sequential, ResNet, DenseNet, Inception, MobileNet-style blocks
-
-🎓 **Well-Documented**
-   Comprehensive examples (113 examples) and extensive API documentation
-
-Quick Example
-=============
-
-Create a simple CNN in just a few lines:
+**Composer API**
 
 .. code-block:: python
 
-    from torchvision_customizer import CustomCNN
-    
-    # Create a simple 4-layer CNN
-    model = CustomCNN(
-        input_shape=(3, 224, 224),
-        num_classes=1000,
-        num_conv_blocks=4,
-        channels=[64, 128, 256, 512],
-        activation='relu'
+    from torchvision_customizer import Stem, Stage, Head
+
+    model = (
+        Stem(64)
+        >> Stage(64, blocks=2, pattern='residual')
+        >> Stage(128, blocks=2, pattern='bottleneck', downsample=True)
+        >> Head(10)
     )
-    
-    # Inspect your model
-    print(model.summary())
-    print(f"Total parameters: {model.count_parameters():,}")
 
-Why torchvision-customizer?
-============================
+**Recipe API**
 
-Traditional deep learning frameworks often force you to choose between:
+.. code-block:: python
 
-- **Simplicity vs. Flexibility** - High-level APIs are easy but inflexible
-- **Speed vs. Control** - Quick prototyping comes at the cost of architectural control
-- **Modularity vs. Performance** - Modular designs often sacrifice efficiency
+    from torchvision_customizer import Recipe, build_recipe
 
-**torchvision-customizer** bridges these gaps by providing:
+    recipe = Recipe(
+        stem="conv(64)",
+        stages=["residual(64) x 2", "residual(128) x 2 | downsample"],
+        head="linear(10)"
+    )
+    model = build_recipe(recipe)
 
-✨ An intuitive, Pythonic API that feels natural to use  
-🎯 Fine-grained control over every network component  
-⚡ Near-native PyTorch performance  
-🔄 Seamless integration with existing PyTorch workflows  
-📦 Pre-built, battle-tested components  
-🧪 Comprehensive testing and validation  
+Features
+========
 
-Project Statistics
-==================
-
-* **382 Tests** - Comprehensive test suite with 100% pass rate
-* **113 Examples** - Real-world usage examples for all features
-* **7,750+ Lines** - Production-quality code with full type hints
-* **90+ Components** - Pre-built classes and functions
-* **8 Steps** - Complete development journey documented
-
-Installation
-============
-
-Install from source:
-
-.. code-block:: bash
-
-    git clone https://github.com/codewithdark-git/torchvision-customizer.git
-    cd torchvision-customizer
-    pip install -e ".[dev]"
-
-Requirements:
-
-* Python 3.13 or higher
-* PyTorch 2.9.0 or higher
-* torchvision 0.24.1 or higher
-
-Support
-=======
-
-Need help? Check out:
-
-* **Documentation**: Comprehensive guides and API reference
-* **Examples**: 113 working examples for all use cases
-* **GitHub Issues**: Report bugs or request features
-* **Discussions**: Ask questions and share ideas
-
-Contributing
-============
-
-We welcome contributions! See our :doc:`Contributing Guide <development/contributing>` for details.
-
-License
-=======
-
-This project is licensed under the MIT License - see the LICENSE file for details.
+* **Granular Control**: Customize every aspect of the architecture (depth, width, attention, activation).
+* **Pattern Mixing**: Mix different block types in the same stage (e.g., ``residual+se``).
+* **Introspection**: Built-in ``model.explain()`` for human-readable summaries.
+* **No Pre-trained Weights**: Focused purely on architecture definition and instantiation.
 
 Indices and tables
 ==================
