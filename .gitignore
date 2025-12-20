@@ -7,7 +7,7 @@ __pycache__/
 *.so
 
 # project
-*.md
+*.txt
 *.ps1
 
 # Distribution / packaging
