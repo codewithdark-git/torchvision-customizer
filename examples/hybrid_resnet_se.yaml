@@ -1,0 +1,56 @@
+# torchvision-customizer Recipe v2.1
+# ====================================
+# This recipe creates a hybrid ResNet50 with SE and CBAM attention
+# injected into the later stages for improved feature recalibration.
+
+name: ResNet50-SE-CBAM
+version: "1.0.0"
+description: |
+  ResNet50 backbone with pretrained ImageNet weights.
+  SE attention added to layer3, CBAM to layer4.
+  Custom head for 100-class classification with dropout.
+
+# Macros for reusable values
+macros:
+  attention_reduction: 16
+  dropout_rate: 0.3
+  num_classes: 100
+
+# Input configuration
+input_shape: [3, 224, 224]
+
+# Use pretrained backbone with patches
+backbone:
+  name: resnet50
+  weights: IMAGENET1K_V2
+  patches:
+    # Add Squeeze-Excitation to layer3
+    layer3:
+      wrap:
+        type: se
+        params:
+          reduction: 16
+    
+    # Add CBAM to layer4
+    layer4:
+      wrap:
+        type: cbam_block
+        params:
+          reduction: 16
+          spatial_kernel: 7
+
+# Custom classification head
+head:
+  num_classes: 100
+  dropout: 0.3
+
+# Training hints (optional - for documentation/CLI)
+training:
+  optimizer: adamw
+  learning_rate: 0.0001
+  weight_decay: 0.01
+  epochs: 50
+  batch_size: 32
+  freeze_backbone: true
+  unfreeze_stages: [3]  # Only train last stage + head
+

@@ -1,0 +1,86 @@
+# torchvision-customizer Recipe v2.1
+# ====================================
+# Custom architecture built from scratch (no pretrained backbone)
+
+name: CustomResNet-SE
+version: "1.0.0"
+description: |
+  Custom ResNet-style architecture with SE attention in every stage.
+  Built from scratch using the recipe system.
+
+# Macros for consistency
+macros:
+  activation: relu
+  norm: batch
+  attention: se
+  se_reduction: 16
+
+# Input configuration
+input_shape: [3, 224, 224]
+
+# Stem: Initial feature extraction
+stem:
+  type: conv
+  channels: 64
+  kernel_size: 7
+  stride: 2
+  activation: "@activation"
+  norm: "@norm"
+
+# Stages: Main feature extraction
+stages:
+  # Stage 1: 64 channels, 2 blocks
+  - type: residual
+    pattern: residual
+    channels: 64
+    blocks: 2
+    activation: "@activation"
+    attention: "@attention"
+  
+  # Stage 2: 128 channels, 2 blocks, downsample
+  - type: residual
+    pattern: residual
+    channels: 128
+    blocks: 2
+    downsample: true
+    activation: "@activation"
+    attention: "@attention"
+  
+  # Stage 3: 256 channels, 4 blocks, downsample
+  - type: residual
+    pattern: residual
+    channels: 256
+    blocks: 4
+    downsample: true
+    activation: "@activation"
+    attention: "@attention"
+  
+  # Stage 4: 512 channels, 2 blocks, downsample
+  - type: residual
+    pattern: residual
+    channels: 512
+    blocks: 2
+    downsample: true
+    activation: "@activation"
+    attention: "@attention"
+
+# Classification head
+head:
+  type: linear
+  num_classes: 1000
+  dropout: 0.2
+
+# Training configuration
+training:
+  optimizer: sgd
+  learning_rate: 0.1
+  momentum: 0.9
+  weight_decay: 0.0001
+  epochs: 90
+  batch_size: 256
+  
+  # Learning rate schedule
+  scheduler: step
+  step_size: 30
+  gamma: 0.1
+

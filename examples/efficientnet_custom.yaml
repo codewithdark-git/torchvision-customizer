@@ -1,0 +1,42 @@
+# torchvision-customizer Recipe v2.1
+# ====================================
+# EfficientNet-B4 for fine-grained image classification
+
+name: EfficientNet-B4-FineTune
+version: "1.0.0"
+description: |
+  EfficientNet-B4 backbone optimized for fine-grained classification.
+  Uses pretrained weights with custom head and high dropout.
+
+# Input configuration (B4 optimal resolution)
+input_shape: [3, 380, 380]
+
+# Pretrained backbone
+backbone:
+  name: efficientnet_b4
+  weights: IMAGENET1K_V1
+
+# Custom head for fine-grained task
+head:
+  num_classes: 200  # e.g., CUB-200 birds
+  dropout: 0.4
+
+# Training configuration
+training:
+  optimizer: adamw
+  learning_rate: 0.00005
+  weight_decay: 0.05
+  epochs: 100
+  batch_size: 16
+  
+  # Use cosine annealing with warmup
+  scheduler: cosine
+  warmup_epochs: 5
+  
+  # Data augmentation hints
+  augmentation:
+    - random_resized_crop: 380
+    - horizontal_flip: 0.5
+    - color_jitter: 0.4
+    - random_erasing: 0.25
+
