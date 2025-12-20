@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "torchvision-customizer"
-version = "2.0"
+version = "2.1.0"
 description = "A production-ready Python package for building highly customizable convolutional neural networks (CNNs) from scratch with an intuitive API"
 readme = "README.md"
 requires-python = ">=3.11"
@@ -68,6 +68,9 @@ docs = [
     "sphinx-rtd-theme>=1.0.0",
     "sphinx-autodoc-typehints>=1.22.0",
 ]
+
+[project.scripts]
+tvc = "torchvision_customizer.cli:main"
 
 [project.urls]
 Homepage = "https://github.com/codewithdark-git/torchvision-customizer"

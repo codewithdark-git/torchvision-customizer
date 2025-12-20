@@ -96,6 +96,18 @@ class ComponentRegistry:
             GroupedBottleneck,
             ResidualStage,
             ResidualSequence,
+            # v2.1: Advanced blocks
+            CBAMBlock,
+            ECABlock,
+            DropPath,
+            Mish,
+            GeM,
+            CoordConv,
+            SqueezeExcitation,
+            LayerScale,
+            ConvBNAct,
+            MBConv,
+            FusedMBConv,
         )
         
         # Import layers
@@ -144,6 +156,37 @@ class ComponentRegistry:
         self._register_component('multihead_attention', MultiHeadAttention, 'attention',
                                 aliases=['mha', 'multihead'])
         self._register_component('attention_block', AttentionBlock, 'attention')
+        
+        # v2.1: Register advanced blocks
+        self._register_component('cbam_block', CBAMBlock, 'attention',
+                                aliases=['CBAMBlock', 'cbam_attention'])
+        self._register_component('eca', ECABlock, 'attention',
+                                aliases=['eca_block', 'ECABlock', 'efficient_channel'])
+        self._register_component('se_enhanced', SqueezeExcitation, 'attention',
+                                aliases=['squeeze_excite', 'se_v2'])
+        
+        # v2.1: Register regularization blocks
+        self._register_component('drop_path', DropPath, 'regularization',
+                                aliases=['stochastic_depth', 'DropPath'])
+        self._register_component('layer_scale', LayerScale, 'regularization')
+        
+        # v2.1: Register activation blocks
+        self._register_component('mish', Mish, 'activation',
+                                aliases=['Mish'])
+        
+        # v2.1: Register pooling blocks
+        self._register_component('gem', GeM, 'pooling',
+                                aliases=['generalized_mean', 'GeM'])
+        
+        # v2.1: Register conv blocks
+        self._register_component('coord_conv', CoordConv, 'block',
+                                aliases=['CoordConv', 'coordinate_conv'])
+        self._register_component('conv_bn_act', ConvBNAct, 'block',
+                                aliases=['ConvBNAct', 'convbnact'])
+        self._register_component('mbconv', MBConv, 'block',
+                                aliases=['MBConv', 'inverted_residual'])
+        self._register_component('fused_mbconv', FusedMBConv, 'block',
+                                aliases=['FusedMBConv', 'fused_inverted_residual'])
     
     def _register_component(
         self,

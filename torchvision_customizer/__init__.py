@@ -80,6 +80,26 @@ from torchvision_customizer.utils import (
     get_model_flops,
 )
 
+# v2.1: Hybrid module for pre-trained model customization
+from torchvision_customizer.hybrid import (
+    HybridBuilder,
+    partial_load,
+    transfer_weights,
+    extract_tiers,
+    get_backbone_info,
+)
+
+# v2.1: Advanced blocks
+from torchvision_customizer.blocks import (
+    CBAMBlock,
+    ECABlock,
+    DropPath,
+    Mish,
+    GeM,
+    MBConv,
+    FusedMBConv,
+)
+
 
 __all__ = [
     # Version info
@@ -132,4 +152,20 @@ __all__ = [
     "print_model_summary",
     "validate_architecture",
     "get_model_flops",
+    
+    # v2.1: Hybrid (pre-trained customization)
+    "HybridBuilder",
+    "partial_load",
+    "transfer_weights",
+    "extract_tiers",
+    "get_backbone_info",
+    
+    # v2.1: Advanced blocks
+    "CBAMBlock",
+    "ECABlock",
+    "DropPath",
+    "Mish",
+    "GeM",
+    "MBConv",
+    "FusedMBConv",
 ]

@@ -58,6 +58,22 @@ from torchvision_customizer.blocks.residual_architecture import (
     ResidualStageConfig,
 )
 
+# v2.1: Advanced blocks for modern architectures
+from torchvision_customizer.blocks.advanced_blocks import (
+    CBAMBlock,
+    ECABlock,
+    DropPath,
+    Mish,
+    GeM,
+    CoordConv,
+    GELUActivation,
+    SqueezeExcitation,
+    LayerScale,
+    ConvBNAct,
+    MBConv,
+    FusedMBConv,
+)
+
 __all__ = [
     # Basic blocks
     "ConvBlock",
@@ -91,4 +107,18 @@ __all__ = [
     "ResidualBottleneckStage",
     "ResidualArchitectureBuilder",
     "ResidualStageConfig",
+    
+    # v2.1: Modern architecture blocks
+    "CBAMBlock",
+    "ECABlock",
+    "DropPath",
+    "Mish",
+    "GeM",
+    "CoordConv",
+    "GELUActivation",
+    "SqueezeExcitation",
+    "LayerScale",
+    "ConvBNAct",
+    "MBConv",
+    "FusedMBConv",
 ]
