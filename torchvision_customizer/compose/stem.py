@@ -55,8 +55,14 @@ class Stem(ComposableModule):
         pool_kernel: int = 3,
         pool_stride: int = 2,
         pool_padding: int = 1,
+        # Aliases for convenience
+        kernel_size: Optional[int] = None,
     ):
         super().__init__()
+        
+        # Handle kernel_size alias
+        if kernel_size is not None:
+            kernel = kernel_size
         
         # Auto-calculate padding for same output spatial dim (before stride)
         if padding is None:
