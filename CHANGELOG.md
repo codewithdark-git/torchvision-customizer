@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## [2.1.1] - 2025-01-21
+## [2.1.1] Pre-Release - 2025-12-21
 
 ### Added
 - **Training API** - Built-in training utilities for quick experimentation
@@ -28,7 +28,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## [2.1.0] - 2025-01-20
+## [2.1.0] - 2025-12-20
 
 ### Added
 - **Hybrid Builder** - Load and customize pre-trained torchvision models
@@ -87,7 +87,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## [2.0.0] - 2025-01-15
+## [2.0.0] - 2025-12-07
 
 ### Added
 - **3-Tier API Architecture**
@@ -133,7 +133,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## [1.0.0] - 2024-12-01
+## [1.0.0] - 2025-11-17
 
 ### Added
 - Initial release
