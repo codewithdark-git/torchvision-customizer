@@ -12,7 +12,7 @@
   <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a>
   <a href="https://www.python.org/downloads/"><img src="https://img.shields.io/badge/python-3.11+-blue.svg" alt="Python 3.11+"></a>
   <a href="https://pytorch.org/"><img src="https://img.shields.io/badge/pytorch-2.5+-ee4c2c.svg" alt="PyTorch 2.5+"></a>
-  <a href="https://pypi.org/project/torchvision-customizer/"><img src="https://img.shields.io/badge/version-2.1.0-green.svg" alt="Version"></a>
+  <a href="https://pypi.org/project/torchvision-customizer/"><img src="https://img.shields.io/badge/version-2.1.1-green.svg" alt="Version"></a>
 </p>
 
 <p align="center">
@@ -20,6 +20,7 @@
   <a href="#-quick-start">Quick Start</a> •
   <a href="#-key-features">Features</a> •
   <a href="#-v21-hybrid-models">v2.1 Hybrid</a> •
+  <a href="#-v211-training-api">v2.1.1 Training</a> •
   <a href="#-documentation">Docs</a>
 </p>
 
@@ -286,6 +287,68 @@ model.unfreeze_all()
 
 ---
 
+## 🏋️ v2.1.1: Training API
+
+**NEW in v2.1.1** - Built-in training utilities for quick experimentation:
+
+### Quick Training (One-liner!)
+
+```python
+from torchvision_customizer import HybridBuilder, quick_train
+
+# Build and train in 2 lines!
+model = HybridBuilder().from_torchvision("resnet18", num_classes=10)
+metrics = quick_train(model, dataset='cifar10', epochs=5)
+```
+
+### Full Trainer API
+
+```python
+from torchvision_customizer import HybridBuilder, Trainer
+
+# Build a customized model
+model = HybridBuilder().from_torchvision(
+    "resnet18",
+    weights="IMAGENET1K_V1",
+    patches={"layer3": {"wrap": "se"}},
+    num_classes=10,
+)
+
+# Create trainer and train on CIFAR-10
+trainer = Trainer(model, device='auto')
+metrics = trainer.fit_cifar10(
+    epochs=10,
+    batch_size=128,
+    lr=0.001,
+    optimizer='adamw',
+    scheduler='cosine',
+)
+
+# View results
+print(metrics.summary())
+print(f"Best accuracy: {metrics.best_val_acc:.2%}")
+```
+
+### Supported Datasets
+
+| Dataset | Method | Classes | Image Size |
+|---------|--------|---------|------------|
+| MNIST | `trainer.fit_mnist()` | 10 | 28×28 → 32×32 |
+| CIFAR-10 | `trainer.fit_cifar10()` | 10 | 32×32 |
+| CIFAR-100 | `trainer.fit_cifar100()` | 100 | 32×32 |
+| Custom | `trainer.fit(train_loader, val_loader)` | Any | Any |
+
+### Training Features
+
+- **Automatic device selection** (CPU/CUDA)
+- **Multiple optimizers**: Adam, AdamW, SGD
+- **Learning rate schedulers**: Cosine, Step, OneCycle
+- **Data augmentation** for CIFAR datasets
+- **Training metrics** with history and summaries
+- **Works with frozen backbones** for efficient fine-tuning
+
+---
+
 ## 📊 Comparison
 
 | Feature | torchvision | timm | torchvision-customizer |
@@ -308,7 +371,7 @@ model.unfreeze_all()
 | 📖 Full Documentation | [torchvision-customizer.readthedocs.io](https://torchvision-customizer.readthedocs.io/) |
 | 🎓 Tutorials | [docs/examples/](docs/examples/) |
 | 📋 API Reference | [docs/api/](docs/api/) |
-| 📝 Release Notes | [RELEASE_NOTES_v2.1.md](RELEASE_NOTES_v2.1.md) |
+| 📝 Changelog | [CHANGELOG.md](CHANGELOG.md) |
 
 ---
 
@@ -390,7 +453,7 @@ If you use torchvision-customizer in your research, please cite:
   title={torchvision-customizer: Flexible CNN Architecture Builder},
   author={Ahsan Umar},
   year={2025},
-  version={2.1.0},
+  version={2.1.1},
   url={https://github.com/codewithdark-git/torchvision-customizer}
 }
 ```
