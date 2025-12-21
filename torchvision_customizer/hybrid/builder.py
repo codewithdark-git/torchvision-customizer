@@ -21,6 +21,7 @@ Example:
 
 from typing import Any, Callable, Dict, List, Optional, Tuple, Type, Union
 import copy
+import inspect
 import logging
 import torch
 import torch.nn as nn
@@ -446,14 +447,25 @@ class HybridBuilder:
         in_channels = self._get_channels(original, 'in')
         out_channels = self._get_channels(original, 'out')
         
-        # Build params
+        # Detect which parameters the block accepts
+        sig = inspect.signature(BlockClass.__init__)
+        param_names = set(sig.parameters.keys())
+        
+        # Build params - only pass what the block accepts
         init_params = dict(params)
-        if 'in_channels' not in init_params and in_channels:
+        
+        if 'in_channels' in param_names and 'in_channels' not in init_params and in_channels:
             init_params['in_channels'] = in_channels
-        if 'out_channels' not in init_params and out_channels:
+        if 'out_channels' in param_names and 'out_channels' not in init_params and out_channels:
             init_params['out_channels'] = out_channels
-        if 'channels' not in init_params and out_channels:
+        if 'channels' in param_names and 'channels' not in init_params and out_channels:
             init_params['channels'] = out_channels
+        if 'dim' in param_names and 'dim' not in init_params and out_channels:
+            init_params['dim'] = out_channels
+        
+        # Filter out any params the block doesn't accept
+        init_params = {k: v for k, v in init_params.items() 
+                       if k in param_names or 'kwargs' in str(sig)}
         
         return BlockClass(**init_params)
     
@@ -466,12 +478,27 @@ class HybridBuilder:
         """Wrap a module with an attention/block layer."""
         out_channels = self._get_channels(original, 'out')
         
-        # Build params for wrapper
+        # Build params for wrapper - only pass params the block accepts
         init_params = dict(params)
-        if 'channels' not in init_params and out_channels:
-            init_params['channels'] = out_channels
-        if 'in_channels' not in init_params and out_channels:
-            init_params['in_channels'] = out_channels
+        
+        # Detect which channel parameter the block accepts
+        sig = inspect.signature(BlockClass.__init__)
+        param_names = set(sig.parameters.keys())
+        
+        if out_channels:
+            # Only pass the parameter that the block actually accepts
+            if 'channels' in param_names and 'channels' not in init_params:
+                init_params['channels'] = out_channels
+            if 'in_channels' in param_names and 'in_channels' not in init_params:
+                init_params['in_channels'] = out_channels
+            if 'out_channels' in param_names and 'out_channels' not in init_params:
+                init_params['out_channels'] = out_channels
+            if 'dim' in param_names and 'dim' not in init_params:
+                init_params['dim'] = out_channels
+        
+        # Filter out any params the block doesn't accept
+        init_params = {k: v for k, v in init_params.items() 
+                       if k in param_names or 'kwargs' in str(sig)}
         
         wrapper = BlockClass(**init_params)
         

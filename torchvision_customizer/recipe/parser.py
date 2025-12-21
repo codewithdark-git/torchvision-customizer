@@ -3,8 +3,26 @@
 Parses string-based component definitions into structured configurations.
 Examples:
     "residual(64) x 2" -> {'pattern': 'residual', 'channels': 64, 'blocks': 2}
-    "conv(64, k=7, s=2)" -> {'pattern': 'conv', 'channels': 64, 'kernel': 7, 'stride': 2}
+    "conv(64, k=7, s=2)" -> {'pattern': 'conv', 'channels': 64, 'kernel_size': 7, 'stride': 2}
+    
+Shortcuts:
+    k -> kernel_size
+    s -> stride
+    p -> padding
+    g -> groups
+    e -> expansion
 """
+
+# Parameter shortcuts mapping
+PARAM_SHORTCUTS = {
+    'k': 'kernel_size',
+    's': 'stride',
+    'p': 'padding',
+    'g': 'groups',
+    'e': 'expansion',
+    'r': 'reduction',
+    'd': 'dropout',
+}
 
 import re
 import ast
@@ -84,17 +102,20 @@ def parse_definition(def_str: str) -> Dict[str, Any]:
             # Keyword args
             for kw in call.keywords:
                 val = kw.value
+                # Expand shortcut parameter names (k -> kernel_size, s -> stride, etc.)
+                param_name = PARAM_SHORTCUTS.get(kw.arg, kw.arg)
+                
                 if isinstance(val, ast.Constant):
-                    config['kwargs'][kw.arg] = val.value
+                    config['kwargs'][param_name] = val.value
                 elif isinstance(val, ast.Num):
-                    config['kwargs'][kw.arg] = val.n
+                    config['kwargs'][param_name] = val.n
                 elif isinstance(val, ast.Str):
-                    config['kwargs'][kw.arg] = val.s
+                    config['kwargs'][param_name] = val.s
                 elif isinstance(val, ast.Name):
-                    if val.id == 'True': config['kwargs'][kw.arg] = True
-                    elif val.id == 'False': config['kwargs'][kw.arg] = False
-                    elif val.id == 'None': config['kwargs'][kw.arg] = None
-                    else: config['kwargs'][kw.arg] = val.id
+                    if val.id == 'True': config['kwargs'][param_name] = True
+                    elif val.id == 'False': config['kwargs'][param_name] = False
+                    elif val.id == 'None': config['kwargs'][param_name] = None
+                    else: config['kwargs'][param_name] = val.id
         except Exception as e:
             raise ValueError(f"Failed to parse arguments in '{def_str}': {e}")
             
@@ -150,7 +171,8 @@ def _normalize_config(item: Union[str, Dict[str, Any]], context: str) -> Dict[st
                 config['downsample'] = True
             
             # Store original name as pattern if it's a known pattern
-            if parsed['name'] in ['residual', 'bottleneck', 'conv', 'dense', 'depthwise']:
+            if parsed['name'] in ['residual', 'bottleneck', 'conv', 'dense', 'depthwise', 
+                                  'mbconv', 'fused_mbconv', 'wide_bottleneck']:
                 config['pattern'] = parsed['name']
             
         elif context == 'head':

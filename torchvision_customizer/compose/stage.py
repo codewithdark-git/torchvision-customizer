@@ -18,6 +18,7 @@ from torchvision_customizer.blocks import (
     StandardBottleneck,
     WideBottleneck,
 )
+from torchvision_customizer.blocks.advanced_blocks import MBConv, FusedMBConv
 from torchvision_customizer.layers import get_activation, get_normalization
 
 
@@ -42,14 +43,21 @@ class Stage(ComposableModule):
     Args:
         channels: Output channels for this stage
         blocks: Number of blocks in the stage
-        pattern: Block pattern ('conv', 'residual', 'bottleneck', 'dense', 
-                 'depthwise', or combinations like 'residual+se')
+        pattern: Block pattern. Available patterns:
+            - 'conv': Standard convolution blocks
+            - 'residual': ResNet-style residual blocks
+            - 'bottleneck': Bottleneck residual blocks
+            - 'dense': DenseNet-style dense connections
+            - 'depthwise': Depthwise separable convolutions
+            - 'mbconv': Mobile inverted bottleneck (EfficientNet style)
+            - 'fused_mbconv': Fused MBConv (EfficientNetV2 style)
+            Combine with '+se' for SE attention (e.g., 'residual+se')
         in_channels: Input channels (auto-detected if None)
         downsample: Whether to downsample at the start of stage
         stride: Stride for downsampling (default 2)
         activation: Activation function
         norm: Normalization type
-        expansion: Bottleneck expansion factor
+        expansion: Bottleneck/MBConv expansion factor
         growth_rate: Growth rate for dense blocks
         se_reduction: SE block reduction ratio
         
@@ -62,6 +70,9 @@ class Stage(ComposableModule):
         
         >>> stage = Stage(channels=64, blocks=4, pattern='dense', growth_rate=32)
         >>> # Creates DenseNet-style stage with growth_rate=32
+        
+        >>> stage = Stage(channels=64, blocks=3, pattern='mbconv', expansion=4)
+        >>> # Creates 3 MBConv blocks (EfficientNet style)
     """
     
     def __init__(
@@ -204,9 +215,34 @@ class Stage(ComposableModule):
                 layers.append(block)
                 break  # Dense block handles all layers internally
             
+            elif primary_pattern == 'mbconv':
+                # Mobile Inverted Bottleneck (EfficientNet style)
+                block = MBConv(
+                    in_channels=current_channels,
+                    out_channels=out_channels,
+                    expansion=expansion,
+                    stride=block_stride,
+                    kernel_size=kwargs.get('kernel_size', 3),
+                    use_se='se' in patterns or kwargs.get('use_se', True),
+                    se_reduction=se_reduction,
+                    drop_path=kwargs.get('drop_path', 0.0),
+                )
+            
+            elif primary_pattern == 'fused_mbconv':
+                # Fused MBConv (EfficientNetV2 style)
+                block = FusedMBConv(
+                    in_channels=current_channels,
+                    out_channels=out_channels,
+                    expansion=expansion,
+                    stride=block_stride,
+                    kernel_size=kwargs.get('kernel_size', 3),
+                    use_se='se' in patterns or kwargs.get('use_se', False),
+                    drop_path=kwargs.get('drop_path', 0.0),
+                )
+            
             else:
                 raise ValueError(f"Unknown pattern: {primary_pattern}. "
-                               f"Available: conv, residual, bottleneck, dense, depthwise")
+                               f"Available: conv, residual, bottleneck, dense, depthwise, mbconv, fused_mbconv")
             
             # Add SE block if pattern includes 'se' and not already in residual
             if 'se' in patterns and primary_pattern not in ['residual']:
