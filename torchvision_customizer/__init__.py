@@ -83,6 +83,9 @@ from torchvision_customizer.utils import (
 # v2.1: Hybrid module for pre-trained model customization
 from torchvision_customizer.hybrid import (
     HybridBuilder,
+    Trainer,
+    TrainingMetrics,
+    quick_train,
     partial_load,
     transfer_weights,
     extract_tiers,
@@ -155,6 +158,9 @@ __all__ = [
     
     # v2.1: Hybrid (pre-trained customization)
     "HybridBuilder",
+    "Trainer",
+    "TrainingMetrics",
+    "quick_train",
     "partial_load",
     "transfer_weights",
     "extract_tiers",
