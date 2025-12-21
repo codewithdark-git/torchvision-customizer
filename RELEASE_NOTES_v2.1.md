@@ -300,6 +300,7 @@ model = build_recipe(recipe)
 - Hybrid Builder: Smart parameter detection for wrapped blocks (channels vs in_channels)
 - Stage patterns: Added `mbconv` and `fused_mbconv` patterns for EfficientNet-style blocks
 - Recipe parser: Added parameter shortcuts (`k` → `kernel_size`, `s` → `stride`, `p` → `padding`, etc.)
+- Stem class: Added `kernel_size` alias for `kernel` parameter
 - Minor type hint corrections
 - Windows compatibility improvements
 
