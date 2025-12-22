@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/codewithdark-git/torchvision-customizer/main/assets/logo.png" alt="torchvision-customizer" width="400"/>
+  <img src="docs/image/logo.png" alt="torchvision-customizer" width="400"/>
 </p>
 
 <h1 align="center">torchvision-customizer</h1>
