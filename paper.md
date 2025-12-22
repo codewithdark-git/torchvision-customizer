@@ -17,7 +17,7 @@ affiliations:
   - name: Independent Researcher, Pakistan
     index: 1
 date: 21 December 2025
-bibliography: paper/references.bib
+bibliography: references.bib
 ---
 
 # Summary
