@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/image/logo.png" alt="torchvision-customizer" width="400"/>
+  <img src="docs/image/logo.png" alt="torchvision-customizer"/>
 </p>
 
 <h1 align="center">torchvision-customizer</h1>
